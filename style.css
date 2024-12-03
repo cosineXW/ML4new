@@ -25,9 +25,12 @@
 }
 
 #bar3{
-    color: blanchedalmond;
+    padding: 3vw;
      width:100%;
      display:none;
+     font-family: "PingFang SC", "Noto Sans", sans-serif; 
+     font-size: 20px; 
+     color:black;
  }
  #loadingdiv{
      width:100%;
@@ -48,6 +51,7 @@ width: 100%;
 
 #headbar3{
     width:100%;
+   
 }
 
 #file-select {

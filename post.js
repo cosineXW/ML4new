@@ -31,6 +31,8 @@ function handleFileSelect(event) {
 
 function sendMessage() {
   let content = select("#input-text").value();
+  select("#comment-post-caption").html(content);
+
   // if (content == "") {
   //   return;
   // }
