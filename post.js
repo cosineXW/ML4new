@@ -18,14 +18,17 @@ function handleFileSelect(event) {
   let file = event.target.files[0];
   if (file && file.type.startsWith('image')) {
     // Load the selected image into p5.js
-    //uploadedImage = loadImage(URL.createObjectURL(file));
+    uploadedImage = loadImage(URL.createObjectURL(file));
 
     // GH: we don't need to load the image for use in P5,
     // as we aren't using the canvas - instead we can
     // simply set the "src" of an <img> element like so
-    let objectUrl = URL.createObjectURL(file);
-    select("#file-img").elt.src = objectUrl;
-    select("#comment-post-img").elt.src = objectUrl;
+    //let objectUrl = URL.createObjectURL(file);
+
+  
+      let objectUrl = URL.createObjectURL(file);
+      select("#file-img").elt.src = objectUrl;
+      select("#comment-post-img").elt.src = objectUrl;
   }
 }
 
@@ -37,15 +40,45 @@ function sendMessage() {
   //   return;
   // }
   userInput = content;
+  let dataUrl;
   if (uploadedImage) {
-    let file=select("#file-input");
+    uploadedImage.resize(512, 0);
+    uploadedImage.loadPixels();
+    dataUrl = uploadedImage.canvas.toDataURL();
   }
-  
-  
-  messages = [{
-    role: "user",
-    content: "I'm doing a project to let user upload text and one image like what they will do on social media,and let you to give comment on it like real people do. now I need a list of 20 userIDs and comments. comments can be  humorous or serious and positive or negative. the ID can have or without numbers.Respond as valid JSON without any prefix. Use the properties \"id\" and \"comment\" for each comment. Here are the user's blog: "+ select("#file-input").value() + select("#input-text").value(),
-  }];
+
+
+  if (uploadedImage) {
+    messages = [
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text: "Imagine you are a netizen viewing others' posting text and one image on social media. Now I want you to give comment on it like real people do. I need a list of 20 userIDs and comments. comments can be  humorous or serious and positive or negative. the ID should like real people's id which can have or without numbers.Respond as valid JSON without any prefix. Use the properties \"id\" and \"comment\" for each comment. Here are the user's blog: "+ select("#input-text").value(),
+          },
+          {
+            type: "image_url",
+            image_url: {
+              url: dataUrl,
+            },
+          },
+        ],
+      },
+    ];
+  } else {
+    messages = [
+      {
+        role: "user",
+        content: [
+          {
+            type: "text",
+            text: "Imagine you are a netizen viewing others' posting text on social media. Now I want you to give comment on it like real people do. I need a list of 20 userIDs and comments. comments can be  humorous or serious and positive or negative. the ID should like real people's id which can have or without numbers.Respond as valid JSON without any prefix. Use the properties \"id\" and \"comment\" for each comment. Here are the user's blog: "+ select("#input-text").value(),
+          }
+        ],
+      },
+    ];
+  }
   
   select("#input-text").value("");
   
