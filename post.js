@@ -55,7 +55,7 @@ function sendMessage() {
         content: [
           {
             type: "text",
-            text: "Imagine you are a netizen viewing others' posting text and one image on social media. Now I want you to give comment on it like real people do. I need a list of 20 userIDs and comments. comments can be  humorous or serious and positive or negative. the ID should like real people's id which can even in Chinese.if user input is chinese, please generate the userID an the comment in Chinese.Respond as valid JSON without any prefix. Use the properties \"id\" and \"comment\" for each comment. Here are the user's blog: "+ select("#input-text").value(),
+            text: "Imagine you are a netizen viewing others' posting text and one image on social media. Now I want you to give comment on it like real people do. I need a list of 20 userIDs and comments. comments can be  humorous or serious and positive or negative. the userID and the comment should be the same language as the user input.if user input is chinese. Respond as valid JSON without any prefix. Use the properties \"id\" and \"comment\" for each comment. Here are the user's blog: "+ select("#input-text").value(),
           },
           {
             type: "image_url",
@@ -73,7 +73,7 @@ function sendMessage() {
         content: [
           {
             type: "text",
-            text: "Imagine you are a netizen viewing others' posting text on social media. Now I want you to give comment on it like real people do. I need a list of 20 userIDs and comments. comments can be  humorous or serious and positive or negative. the ID should like real people's id which can even in Chinese. if the user input is Chinese, please generate userID and comment in Chinese.Respond as valid JSON without any prefix. Use the properties \"id\" and \"comment\" for each comment. Here are the user's blog: "+ select("#input-text").value(),
+            text: "Imagine you are a netizen viewing others' posting text on social media. Now I want you to give comment on it like real people do. I need a list of 20 userIDs and comments. comments can be  humorous or serious and positive or negative.The userID and comment should be the same language as the user input.if user input is chinese.Respond as valid JSON without any prefix. Use the properties \"id\" and \"comment\" for each comment. Here are the user's blog: "+ select("#input-text").value(),
           }
         ],
       },

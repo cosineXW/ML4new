@@ -153,8 +153,27 @@ width: 100%;
     font-size: 30px;
     display:none;
 }
+<<<<<<< Updated upstream
 
 
 #file-input{
     /* display: none; */
+=======
+.back-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8vw;
+    height: 5vh;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.back-button:hover {
+    background-color: #0056b3;
+>>>>>>> Stashed changes
 }
